@@ -1,0 +1,215 @@
+[General]
+    PlotWidth = 15.0
+    PlotHeight = 10.0
+    StartDate = "2007-01-01 01:00"
+    EndDate = "2013-01-01 00:00"
+
+[Variables]
+
+    [[Ta]]
+        AltVarName = "Ta"
+        Ticks = "[0,10,20,30]"
+        Lower = -10
+        Upper = 40
+    [[Ta_Con]]
+        AltVarName = "Ta"
+        Ticks = "[0,10,20,30]"
+        Lower = -10
+        Upper = 40
+    [[Fe]]
+        AltVarName = "Fe"
+        Ticks = "[-200,0,200,400,600]"
+        Lower = -200
+        Upper = 600
+	[[Fe_Con]]
+        AltVarName = "Fe_Con"
+        Ticks = "[-200,0,200,400,600]"
+        Lower = -200
+        Upper = 600
+    [[Fc]]
+        AltVarName = "Fc"
+        Ticks = "[-30,-20,-10,0,10,20]"
+        Lower = -30
+        Upper = 20
+    [[Fc_Con]]
+        AltVarName = "Fc_Con"
+        Ticks = "[-30,-20,-10,0,10]"
+        Lower = -30
+        Upper = 10
+    [[GPP_Con]]
+        AltVarName = "GPP_Con"
+        Ticks = "[-30,-20,-10,0]"
+        Lower = -30
+        Upper = 0
+    [[Fre_Con]]
+        AltVarName = "Fre_Con"
+        Ticks = "[-30,-20,-10,0,10,20]"
+        Lower = -30
+        Upper = 20
+		
+    [[Fsd]]
+        AltVarName = "Fsd"
+        Ticks = "[0,300,600,900,1200]"
+        Lower = -10
+        Upper = 1200
+    [[Fsd_Con]]
+        AltVarName = "Fsd_Con"
+        Ticks = "[0,300,600,900,1200]"
+        Lower = -10
+        Upper = 1200
+	[[Fsu]]
+        AltVarName = "Fsu"
+        Ticks = "[0,100,200,300,400]"
+        Lower = -10
+        Upper = 400
+    [[Fsu_Con]]
+        AltVarName = "Fsu_Con"
+        Ticks = "[0,100,200,300,400]"
+        Lower = -10
+        Upper = 400
+    [[Fld]]
+        AltVarName = "Fld"
+        Ticks = "[200,300,400,500,600]"
+        Lower = 200
+        Upper = 600
+    [[Fld_Con]]
+        AltVarName = "Fld_Con"
+        Ticks = "[200,300,400,500,600]"
+        Lower = 200
+        Upper = 600
+    [[Flu]]
+        AltVarName = "Flu"
+        Ticks = "[200,300,400,500,600]"
+        Lower = 200
+        Upper = 600
+	[[Flu_Con]]
+        AltVarName = "Flu_Con"
+        Ticks = "[200,300,400,500,600]"
+        Lower = 200
+        Upper = 600
+    [[Fn]]
+        AltVarName = "Fn"
+        Ticks = "[-200,0,250,500,750]"
+        Lower = -200
+        Upper = 1000
+    [[Fn_Con]]
+        AltVarName = "Fn_Con"
+        Ticks = "[-200,0,250,500,750]"
+        Lower = -200
+        Upper = 1000
+    [[Ah]]
+        AltVarName = "Ah"
+        Ticks = "[0,10,20,30]"
+        Lower = 0
+        Upper = 40
+    [[Ah_Con]]
+        AltVarName = "Ah_Con"
+        Ticks = "[0,10,20,30]"
+        Lower = 0
+        Upper = 40
+    [[Cc]]
+        AltVarName = "Cc"
+        Ticks = "[350,400,450,600,900]"
+        Lower = 300
+        Upper = 900
+    [[Ws_CSAT]]
+        AltVarName = "Ws_CSAT"
+        Ticks = "[0,2.5,5,7.5,10]"
+        Lower = 0
+        Upper = 15
+    [[Ws_CSAT_Con]]
+        AltVarName = "Ws_CSAT_Con"
+        Ticks = "[0,2.5,5,7.5,10]"
+        Lower = 0
+        Upper = 15
+    [[Wd_CSAT]]
+        AltVarName = "Wd_CSAT"
+        Ticks = "[0,90,180,270]"
+        Lower = 0
+        Upper = 360
+    [[ustar]]
+        AltVarName = "ustar"
+        Ticks = "[0,0.5,1.0,1.5]"
+        Lower = 0
+        Upper = 2.0
+    [[Fh]]
+        AltVarName = "Fh"
+        Ticks = "[-150,0,150,300,450]"
+        Lower = -150
+        Upper = 500
+	[[Fh_Con]]
+        AltVarName = "Fh_Con"
+        Ticks = "[-150,0,150,300,450]"
+        Lower = -150
+        Upper = 500
+    [[Fg]]
+        AltVarName = "Fg"
+        Ticks = "[-150,0,150,300]"
+        Lower = -150
+        Upper = 300
+    [[Fg_Con]]
+        AltVarName = "Fg_Con"
+        Ticks = "[-150,0,150,300]"
+        Lower = -150
+        Upper = 300
+	[[Ts]]
+        AltVarName = "Ts"
+        Ticks = "[-10,0,20,40,60]"
+        Lower = -10
+        Upper = 60
+	[[Ts_Con]]
+        AltVarName = "Ts_Con"
+        Ticks = "[-10,0,20,40,60]"
+        Lower = -10
+        Upper = 60
+    [[Sws]]
+        AltVarName = "Sws"
+        Ticks = "[0,0.1,0.2,0.3]"
+        Lower = 0
+        Upper = 0.3
+    [[Sws_Con]]
+        AltVarName = "Sws_Con"
+        Ticks = "[0,0.1,0.2,0.3]"
+        Lower = 0
+        Upper = 0.3
+    [[Precip]]
+        AltVarName = "Precip"
+        Ticks = "[0,5,10,15]"
+        Lower = 0
+        Upper = 20
+    [[Precip_Con]]
+        AltVarName = "Precip"
+        Ticks = "[0,5,10,15]"
+        Lower = 0
+        Upper = 20
+[Plots]
+    [[1]]
+        Title = "Carbon flux fingerprint - gapfilled"
+        Variables = "['Fc_Con','Fre_Con','GPP_Con']"
+	[[2]]
+        Title = "Carbon flux fingerprint"
+        Variables = "['Fc','Fc_Con']"
+    [[3]]
+        Title = "Radiation fingerprint"
+        Variables = "['Fsd','Fsu','Fld','Flu','Fn']"
+    [[4]]
+        Title = "Meteorology fingerprint"
+        Variables = "['Cc','Ws_CSAT','Ws_CSAT_Con','Wd_CSAT']"
+    [[5]]
+        Title = "Meteorology fingerprint gapfilled"
+        Variables = "['Ta','Ta_Con','Ah','Ah_Con']"
+    [[6]]
+        Title = "Flux fingerprint"
+        Variables = "['Fn','Fh','Fe','Fg']"
+	[[7]]
+        Title = "Flux fingerprint gapfilled"
+        Variables = "['Fn_Con','Fh_Con','Fe_Con','Fg_Con']"
+    [[8]]
+        Title = "Soil fingerprint"
+        Variables = "['Ts','Sws','Ts_Con','Sws_Con']"
+	[[9]]
+        Title = "Radiation fingerprint gapfilled"
+        Variables = "['Fsd_Con','Fsu_Con','Fld_Con','Flu_Con','Fn_Con']"
+    [[10]]
+        Title = "Precip fingerprints"
+        Variables = "['Precip','Precip_Con']"

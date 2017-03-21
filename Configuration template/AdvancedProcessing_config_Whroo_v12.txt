@@ -1,0 +1,97 @@
+# Control file for Advanced Data processing
+# DINGO version 12
+# By Jason Beringer
+# jason.beringer@uwa.edu.au
+# TEMPLATE VERSION
+#
+#   1) Replace the following place holders with values for your site:
+#   2) Choose the options you want
+#   3) Complete the files section
+#
+
+[Site]
+	##### Enter site specific details #####
+		Site_ID							= "Whroo"
+		Tower_Lat 						= -36.6732
+		Tower_Long 						= +145.0294
+	# Set the frequency of the flux data 30 or 60 minutes etc.
+		FluxFreq 						= "30 min"
+		Altitude 						= 143           #Site altitude in m
+		
+[Files]
+    ##### Files for INPUT and OUTPUT #####
+	#This is a list of BoM stations around Australia.  Downloaded Jan 2013
+		BoMfilename						="BoMstations.txt"
+    #Flux tower filename of data netcdf
+    #This can be a multiple year file from concatenating nc files
+		FLUXfilename 					="Whroo_2011_2014.nc"
+		mypathforAWSdata				="E:/My Dropbox/Dropbox/Data_sites non flux/BoM_AWS_Data/data_30min"   
+		mypathforFluxdata				="E:/My Dropbox/Dropbox/Data_flux_data/Site data processing/"
+		mypathforAWAPdata				="E:/My Dropbox/Dropbox/Data_sites non flux/AWAP Timeseries/data_sites"
+		mypathforGlobalSolardata		="E:/My Dropbox/Dropbox/Data_sites non flux/BoM_AWS_Data/data_daily/"
+		FileName_AWAPData				="Whroo.csv"
+		BIOS2filename					="E:/My Dropbox/Dropbox/Data_sites non flux/BIOS2 output 2014/Whroo.nc"
+		inputMODIS_base 				= "E:/My Dropbox/Dropbox/Data_sites non flux/MODIS_cutout_timeseries"
+	
+	#Files for OUTPUT - All files saved with this filename base under subdirectory of Site_ID/Advanced
+		myBaseforResults				="E:/My Dropbox/Dropbox/Data_flux_data/Site data processing/"
+
+[Options]
+	###### General options #####
+	# Set the frequency at which to perform the correlation analysis between Flux Tower and BoM stations
+	#either 'all','annual','monthly' 
+		corr_freq                			= "annual"
+	#The Bom AWS has time stamp starting at the hour and Loggers time stamp at end of period. So we need to offset by 30 minutes
+	#Usually true
+		OffsetAWS30min           			= Yes            
+	# Here there are options for each process in the advanced processing routines which are done in the order below. 
+	# Usually you execute these all to do a complete run.  But this takes some time.  So if you have already done 
+	# parts you can just update with parts you need
+	# Start by getting the AWS variables first get best 3 sites.
+	
+	#Here enter the variable name exactly for the wind speed variable (usually Ws_CSAT or Ws)
+		Ws_variable_name	     			= "Ws_CSAT"
+	
+	##### Options for processing is modular.  You can opt to run (YES) or not (NO) each section. Normally run from start to finish. #####
+		GetL3FluxTowerData       			= Yes  	
+		GetBoMAWSfiles           			= Yes 
+		ConstructMetfromBoMAWS   			= Yes 
+		Fetch_CABLE_data_NC      			= Yes
+		Construct_gapfill_Ts_Swc 			= Yes
+		Gapfill_Rainfall         			= Yes
+		CABLEdata_for_rainfallgap_too 		= Yes
+		Ingest_MODIS             			= Yes
+	#Specify this MODIS phrase to search for in the MODIS cutout data directory.
+		MODIS_key                			= "Whroo"
+		Gapfill_radiation        			= Yes
+	#Note the ANN will be applied based on frequency of 'all', 'annual', monthly' or a categorical variable column name such as 'RDMF_Phase' 
+		ANN_gapfill_freq         			= all
+		Use_Fc_Storage           			= No
+		Gapfill_fluxes_ANN       			= Yes
+	
+	##### Here options for Ustar_filter calculations and then the filter type that is used.  #####
+	# You will need to  AT LEAST calculate the ustar you want to use in the ustar_filter_type, below. But you can calculate both Reichstein and Barr at the moment
+	# Chose which of the following calculations to be done within DINGO.  Each ustar calculation is output as a separate column.  
+	# Beware that the Barr et al method uses bootstrapping which can take 24 hours for 1000 iterations (recommended).  Set the number of bootstraps you want below.
+		Ustar_Reichstein_calculate  		= Yes
+		Ustar_Barr_calculate				= Yes
+		Ustar_Barr_bootstraps				= 1000
+	# Here set preference for Ustar_filter_type which are as follows
+	# 1. "auto" which uses default ustar threshold scheme which is since version 12 - Barr et al. (applied annually)
+	# 2. Other options are a numerical threshold manually set (i.e. 0.17), 
+	# 3. Or set for Barr et al approach "ustar_Barr"
+	# 4. Or use Reichstein with maximum value over entire timeseries "ustar_Reichstein_Max", 
+	# 5. Or 3 month window maximum allows ustar threshold to vary "ustar_Reichstein_window"
+	# Which ever variable is used it is also saved as "ustar_used"
+		Ustar_filter_type		    		= "ustar_Barr"
+		Calculate_Fre_ANN        			= Yes
+		Calculate_Fre_Lasslop    			= Yes
+		Calculate_GPP            			= Yes
+	##### Options for outputs.  Diagnostics and fingerprint plots #####	
+		Isaac_Fingerprint_plots  			= Yes
+		Fingerprint_file         			= "E:/My Dropbox/Dropbox/Data_flux_data/controlfiles/Whroo/Advanced/fingerprint.txt"
+		Diagnostics              			= Yes
+	##### Options for outputting data in different formats #####
+		Output_yearly_EddyProc_files 		= Yes
+		Output_yearly_ARM_files  			= No
+		Output_yearly_WAVES_files  			= No

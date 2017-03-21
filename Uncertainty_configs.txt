@@ -1,0 +1,105 @@
+# Master configuration file
+
+#-------------------------------------------------------------------
+# General settings
+#-------------------------------------------------------------------
+
+[global_configs]
+    [[files]]
+        input_file = "E:/My Dropbox/Dropbox/Data_flux_data/Site data processing/Litchfield/Advanced_v13/Advanced_processed_data_Litchfield_v13.dff"
+        output_path = "E:/My Dropbox/Dropbox/Data_flux_data/Site data processing/Litchfield/Advanced_v13/Diagnostics/Uncertainty/"
+
+    [[options]]
+        noct_threshold = 5
+        use_storage = False
+        unify_flux_storage_cases = True
+        ustar_filter_day = True
+        [[[ustar_threshold]]]
+
+            2015 = 0.276 # Lower: 0.32, central: 0.40, upper: 0.61
+            2016 = 0.275 # Lower: 0.30, central: 0.42, upper: 0.61
+        [[[ustar_uncertainty]]]
+            2015 = 0.056
+            2016 = 0.055
+
+
+
+#-------------------------------------------------------------------
+# Algorithm-specific settings
+#-------------------------------------------------------------------
+
+[respiration_configs]
+    [[variables]]
+        carbon_flux = Fc
+        carbon_storage = Fc_storage_obs
+        temperature = Ta
+        soil_moisture = Sws
+        soil_temperature = Ts
+        solar_radiation = Fsd
+        friction_velocity = ustar
+        #generic = Fc_storage_obs
+    [[options]]
+	    step_size_days = 5
+	    window_size_days = 15
+	    minimum_pct_annual = 20
+	    minimum_pct_window = 20
+        output_folder = Respiration
+        output_fit_plots = False
+
+[photosynthesis_configs]
+    [[variables]]
+        carbon_flux = Fc
+        carbon_storage = Fc_storage_obs
+        temperature = Ta
+        solar_radiation = Fsd
+        vapour_pressure_deficit = VPD
+        friction_velocity = ustar
+    [[options]]    
+        step_size_days = 5
+	    window_size_days = 15
+	    minimum_pct_window = 20
+        use_nocturnal_rb = True
+        output_folder = Light_response
+        output_fit_plots = False
+
+[random_error_configs]
+    [[variables]]
+        carbon_flux = Fc
+#        modelled_carbon_flux = Fc_SOLO
+        carbon_storage = Fc_storage_obs
+        temperature = Ta
+        solar_radiation = Fsd
+        friction_velocity = ustar
+        wind_speed = Ws_CSAT
+    [[options]]
+        pos_averaging_bins = 10
+        neg_averaging_bins = 10
+        radiation_difference_threshold = 35
+        temperature_difference_threshold = 3
+        windspeed_difference_threshold = 1
+        mean_series = NEE_model
+        propagation_series = NEE_model
+
+[model_error_configs]
+    [[variables]]
+        carbon_flux = Fc
+#        modelled_carbon_flux = Fc_SOLO
+        carbon_storage = Fc_storage_obs
+        temperature = Ta
+        solar_radiation = Fsd
+        friction_velocity = ustar
+        wind_speed = Ws_CSAT
+    [[options]]
+
+[NEE_uncertainty_configs]
+    num_trials = 101
+    do_random_uncertainty = True
+    do_model_uncertainty = True
+    do_ustar_uncertainty = True
+    NEE_model = LT # Options are 'ANN' and 'LT'
+    save_results = True
+
+[partitioning_uncertainty]
+    num_trials = 5
+    gaps = True
+    gap_type = obs

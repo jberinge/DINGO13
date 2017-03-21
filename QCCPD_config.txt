@@ -1,0 +1,29 @@
+# Comments
+
+# Input file and name, output path
+[files]
+	input_path='E:/My Dropbox/Dropbox/Data_flux_data/Site data processing/Calperum/'
+	input_file='Calperum_2010_2013.nc'
+	output_path='/temp/Calperum'
+
+# Naming convention in input file
+[variables]
+	[[data]]
+		carbon_flux='Fc'
+		temperature='Ta'
+		friction_velocity='ustar'
+		solar_radiation='Fsd'
+	[[QC]]
+		carbon_flux_QCFlag='Fc_QCFlag'
+		temperature_QCFlag='Ta_QCFlag'
+		friction_velocity_QCFlag='ustar_QCFlag'
+		solar_radiation_QCFlag='Fsd_QCFlag'
+
+# User settings
+[options]
+	radiation_threshold='10'
+	nan_value='-9999'
+	num_bootstraps='1'
+	QC_accept_codes='[0,10]'
+	output_results='True'
+	output_plots='True'
